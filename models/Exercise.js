@@ -1,9 +1,7 @@
 //bring in mongoose Schema and model 
 const { Schema, model } = require('mongoose')
-const { Exercise } = require('.')
-
 //define what exercise will look like for new data
-module.exports = model('Exercise', new Schema(
+const exerciseSchema = new Schema(
     {
     // define first index
       day: {
@@ -47,12 +45,12 @@ module.exports = model('Exercise', new Schema(
     virtuals: true
     } 
   }
-))
+)
 
 //define virtual properties for totaling duration
-Exercise.virtual("totalDuration").get(function () {
+exerciseSchema.virtual("totalDuration").get(function () {
     //reduce array allows sum of duration
-    return this.exercises.reduce((total, exercise) => {
-        return total + exercise.duration
-    }, 0)
+    return this.exercises.reduce((total, exercise) =>  total + exercise.duration, 0)
 })
+
+module.exports = model('Excercise', exerciseSchema)
