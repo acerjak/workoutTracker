@@ -2,7 +2,12 @@
 const express = require('express')
 const app = express()
 
+//bring in middleware functions
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
+//bring in routes folder
+app.use(require('./routes'))
 
 //bring in database connection in config folder
 require('./config')
