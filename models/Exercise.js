@@ -14,6 +14,12 @@ module.exports = model('Exercise', new Schema(
         weight: Number,
         reps: Number,
         sets: Number
+    },
+    {
+        type: String,
+        name: String,
+        duration: Number,
+        distance: Number
     }]
 }))
 
