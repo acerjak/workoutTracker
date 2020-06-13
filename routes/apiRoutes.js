@@ -4,16 +4,16 @@ const Workout = require('../models/Workout.js')
 const router = require('express').Router()
 //GET all exercises
 router.get('/workouts', (req, res) => {
-    Workout.find()
-        .then(workout => res.json(workout))
+    Workout.find(req.params.id)
+        .then((workout) => res.json(workout))
         .catch(err => console.error(err))
 })
-//GET one exercise
-router.get('/workouts/:id', (req, res) => {
-    Workout.findById(req.query)
-        .then(workout => res.json(workout))
-        .catch(err => console.error(err))
-})
+// //GET one exercise
+// router.get('/workouts/:id', (req, res) => {
+//     Workout.findById(req.params.id)
+//         .then((workout) => res.json(workout))
+//         .catch(err => console.error(err))
+// })
 //PUT one exercise
 router.put('/workouts/:id', (req, res) => {
     Workout.findByIdAndUpdate(req.params.id, { $push : { exercises: req.body } })
