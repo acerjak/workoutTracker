@@ -46,11 +46,15 @@ const exerciseSchema = new Schema(
     } 
   }
 )
-
 //define virtual properties for totaling duration
 exerciseSchema.virtual("totalDuration").get(function () {
     //reduce array allows sum of duration
     return this.exercises.reduce((total, exercise) =>  total + exercise.duration, 0)
+})
+//define virtual properties for totaling weight
+exerciseSchema.virtual("totalWeight").get(function () {
+    //reduce array allows sum of exercise
+    return this.exercises.reduce((total, exercise) =>  total + exercise.weight, 0)
 })
 
 module.exports = model('Excercise', exerciseSchema)
