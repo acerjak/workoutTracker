@@ -1,7 +1,8 @@
 //bring in mongoose Schema and model 
+const mongoose = require('mongoose')
 const { Schema, model } = require('mongoose')
 //define what exercise will look like for new data
-const exerciseSchema = new Schema(
+const workoutSchema = new Schema(
     {
     // define first index
       day: {
@@ -9,7 +10,7 @@ const exerciseSchema = new Schema(
         default: () => new Date()
     },
         // define secondary index
-    exercise: [
+    exercises: [
     {
         type: {
             type: String,
@@ -40,21 +41,38 @@ const exerciseSchema = new Schema(
     }]
 }, 
 {
+    duration: true,
+    weight: true,
+    distance: true,
     toJSON: {
     //enable virtual properties 
     virtuals: true
     } 
   }
 )
+
 //define virtual properties for totaling duration
-exerciseSchema.virtual("totalDuration").get(function () {
+workoutSchema.virtual("totalDuration").get(function () {
     //reduce array allows sum of duration
-    return this.exercises.reduce((total, exercise) =>  total + exercise.duration, 0)
+    return this.exercises.reduce((duration, exercises) => { 
+        return duration + exercises.duration;
+    }, 0)
 })
 //define virtual properties for totaling weight
-exerciseSchema.virtual("totalWeight").get(function () {
+workoutSchema.virtual("totalWeight").get(function () {
     //reduce array allows sum of exercise
-    return this.exercises.reduce((total, exercise) =>  total + exercise.weight, 0)
+    return this.exercises.reduce((weight, exercises) =>  {
+        return weight + exercises.weight;
+    }, 0)
+})
+//define virtual properties for totaling distance
+workoutSchema.virtual("totalDistance").get(function () {
+    //reduce array allows sum of exercise
+    return this.exercises.reduce((distance, exercises) =>  {
+        return distance + exercises.distance;
+    }, 0)
 })
 
-module.exports = model('Excercise', exerciseSchema)
+ const Workout = mongoose.model('Workout', workoutSchema)
+ 
+ module.exports = Workout
