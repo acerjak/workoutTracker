@@ -6,6 +6,7 @@
 * [Usage](#usage)
 * [Credits](#credits)
 * [Link](#link)
+* [Gif](#gif)
 * [Questions](#questions)
 ## Installation
 #### Please follow this command to install npm dependencies:
@@ -17,6 +18,8 @@
 > I credit Trilogy/UCI for providing the front-end of this application. I provided the back-end routes and database connections, then finally the deployment on Heroku.
 ## Link
 > [Deployed Link](https://murmuring-depths-64349.herokuapp.com/ "Heroku App")
+## Gif
+![gif](/gif/workoutTrackerGif.gif "gif")
 ## Questions
 > Please send any inquiries or concerns through [acerjak](https://api.github.com/users/acerjak "GitHub Profile") or at amandacerjak@gmail.com.
 
