@@ -73,6 +73,6 @@ workoutSchema.virtual("totalDistance").get(function () {
     }, 0)
 })
 
- const Workout = mongoose.model('Workout', workoutSchema)
+//  const Workout = mongoose.model('Workout', workoutSchema)
  
- module.exports = Workout
+ module.exports = model('Workout', workoutSchema)
