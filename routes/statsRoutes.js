@@ -4,7 +4,7 @@ const Workout = require('../models/Workout.js')
 const router = require('express').Router()
 //GET all exercises
 router.get('/workouts/range', (req, res) => {
-    Workout.find()
+    Workout.find({})
         .then(workout => res.json(workout))
         .catch(err => console.error(err))
 })
