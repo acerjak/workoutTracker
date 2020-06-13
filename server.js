@@ -21,7 +21,7 @@ app.get('/stats', (req,res) => {
     ))
 })
 //route to connect * with index.html
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(join(__dirname,
     'index.html'
     ))
