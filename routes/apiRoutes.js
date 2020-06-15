@@ -17,7 +17,7 @@ router.get('/workouts', (req, res) => {
 //PUT one exercise
 router.put('/workouts/:id', (req, res) => {
     Workout.findByIdAndUpdate(req.params.id, { $push : { exercises: req.body } })
-        .then(() => res.sendStatus(200))
+        .then((db) => res.json(db))
         .catch(err => console.error(err))
 })
 //POST one workout
